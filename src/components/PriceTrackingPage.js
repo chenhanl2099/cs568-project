@@ -1,6 +1,7 @@
 // src/components/PriceTrackingPage.js
 import React from "react";
 import { useParams } from "react-router-dom";
+import PriceTrackingChart from "./PriceTrackingChart";
 
 const mockPriceData = {
   item1: [
@@ -54,6 +55,8 @@ const PriceTrackingPage = () => {
   return (
     <div>
       <h2>Price Tracking for Item {id}</h2>
+
+      <PriceTrackingChart data={priceData} />
 
 
           <thead>
