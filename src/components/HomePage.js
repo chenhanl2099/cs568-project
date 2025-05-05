@@ -28,7 +28,11 @@ const HomePage = () => {
                 className="product-photo"
               />
             </div>
-            <Link to={`/item/${item.id}`} className="product-title">
+            <Link
+              to={`/item/${item.id}`}
+              state={{ title: item.title }}
+              className="product-title"
+            >
               {item.title}
             </Link>
           </div>
