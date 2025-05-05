@@ -13,6 +13,7 @@ const ItemDetailPage = () => {
   return (
     <div>
       <h2>{item.title}</h2>
+      <p style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>${item.price.toFixed(2)}</p>
       <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '1em' }}>
         {item.images.map((url, index) => (
           <img key={index} src={url} alt={`Detail ${index}`} width="200" />
