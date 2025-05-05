@@ -1,0 +1,94 @@
+/* components/HomePage.css */
+
+.home-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .welcome-banner {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .welcome-banner h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subheading {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .product-card {
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+  }
+  
+  .product-card:focus,
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-image-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  
+  .product-card:hover .product-image {
+    transform: scale(1.05);
+  }
+  
+  .product-title {
+    display: block;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #0073e6;
+    margin: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .product-title:hover {
+    text-decoration: underline;
+  }
+  
+  .footer {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  
+  .settings-link {
+    font-size: 1rem;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .settings-link:hover {
+    color: #000;
+  }
+  
