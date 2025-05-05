@@ -1,0 +1,63 @@
+[
+    {
+      "id": 1,
+      "title": "Wireless Headphones",
+      "description": "Experience premium audio quality and long battery life with our Wireless Headphones. Perfect for travel, workouts, and daily commutes.",
+      "images": [
+        "https://picsum.photos/id/101/300",
+        "https://picsum.photos/id/102/300",
+        "https://picsum.photos/id/103/300"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Smartphone Case",
+      "description": "This durable and stylish smartphone case offers superior protection against drops and scratches, while maintaining a sleek profile.",
+      "images": [
+        "https://picsum.photos/id/104/300",
+        "https://picsum.photos/id/105/300",
+        "https://picsum.photos/id/106/300"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Portable Charger",
+      "description": "Charge your devices on the go with this high-capacity portable charger. Compact, lightweight, and reliable for everyday use.",
+      "images": [
+        "https://picsum.photos/id/107/300",
+        "https://picsum.photos/id/108/300",
+        "https://picsum.photos/id/109/300"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Running Shoes",
+      "description": "Lightweight and breathable running shoes designed for comfort, support, and durability—ideal for all types of runners.",
+      "images": [
+        "https://picsum.photos/id/110/300",
+        "https://picsum.photos/id/111/300",
+        "https://picsum.photos/id/112/300"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Smart Watch",
+      "description": "Stay connected and track your health with this stylish smart watch featuring fitness tracking, message notifications, and more.",
+      "images": [
+        "https://picsum.photos/id/113/300",
+        "https://picsum.photos/id/114/300",
+        "https://picsum.photos/id/115/300"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Laptop Backpack",
+      "description": "A modern, weather-resistant backpack with padded compartments to keep your laptop and accessories safe on the go.",
+      "images": [
+        "https://picsum.photos/id/116/300",
+        "https://picsum.photos/id/117/300",
+        "https://picsum.photos/id/118/300"
+      ]
+    }
+  ]
+  
