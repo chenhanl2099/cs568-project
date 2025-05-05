@@ -1,0 +1,78 @@
+.price-tracking-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fdfdfd;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .tracking-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .tracking-header h1 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tracking-header p {
+    color: #666;
+    font-size: 1rem;
+  }
+  
+  .chart-wrapper {
+    margin-bottom: 3rem;
+  }
+  
+  .price-table-section {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    animation: fadeInUp 0.6s ease;
+  }
+  
+  .table-heading {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  
+  .price-table th,
+  .price-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .price-table th {
+    background-color: #f7f7f7;
+    color: #333;
+  }
+  
+  .price-table tr:hover {
+    background-color: #f5faff;
+    transition: background 0.2s ease;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

@@ -1,8 +1,9 @@
-// src/components/PriceTrackingPage.js
 import React from "react";
 import { useParams } from "react-router-dom";
-import PriceTrackingChart from "./PriceTrackingChart";
+import PriceChart from "./PriceChart";
+import "./PriceTrackingPage.css";
 
+// Sample monthly price data for items
 const mockPriceData = {
   item1: [
     { month: "Jan", price: 99 },
@@ -53,28 +54,36 @@ const PriceTrackingPage = () => {
   const priceData = mockPriceData[`item${id}`] || [];
 
   return (
-    <div>
-      <h2>Price Tracking for Item {id}</h2>
+    <main className="price-tracking-container">
+      <header className="tracking-header">
+        <h1>📈 Price Tracking for Item {id}</h1>
+        <p>View trends and monthly price changes with visual insight.</p>
+      </header>
 
-      <PriceTrackingChart data={priceData} />
+      <section className="chart-wrapper">
+        <PriceChart data={priceData.map(({ month, price }) => ({ date: month, price }))} />
+      </section>
 
-
+      <section className="price-table-section">
+        <h2 className="table-heading">Monthly Price Overview</h2>
+        <table className="price-table">
           <thead>
             <tr>
-              <th >Month</th>
-              <th >Price ($)</th>
+              <th>Month</th>
+              <th>Price ($)</th>
             </tr>
           </thead>
           <tbody>
             {priceData.map((entry, index) => (
               <tr key={index}>
-                <td >{entry.month}</td>
-                <td >{entry.price}</td>
+                <td>{entry.month}</td>
+                <td>${entry.price}</td>
               </tr>
             ))}
           </tbody>
-
-      </div>
+        </table>
+      </section>
+    </main>
   );
 };
 
