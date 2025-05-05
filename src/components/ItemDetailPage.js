@@ -1,18 +1,25 @@
-// src/components/ItemDetailPage.js
 import React from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import itemData from "../data/itemData.json";
 
 const ItemDetailPage = () => {
-  let { id } = useParams();
-  const location = useLocation();
-  const title = location.state?.title || "Unknown Item";
+  const { id } = useParams();
+  const item = itemData.find(i => i.id === parseInt(id));
+
+  if (!item) {
+    return <div>Item not found.</div>;
+  }
 
   return (
     <div>
-      <h2>{title}</h2>
-      <p>Image placeholder: [Insert image here]</p>
-      <p>Item details go here.</p>
-      <Link to={`/track/${id}`}>
+      <h2>{item.title}</h2>
+      <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '1em' }}>
+        {item.images.map((url, index) => (
+          <img key={index} src={url} alt={`Detail ${index}`} width="200" />
+        ))}
+      </div>
+      <p style={{ maxWidth: '600px' }}>{item.description}</p>
+      <Link to={`/track/${item.id}`}>
         <button>Track Price Change</button>
       </Link>
       <br />
