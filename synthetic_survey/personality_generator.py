@@ -88,7 +88,7 @@ def generate_and_save_personalities(num_personalities: int):
         if csvfile.tell() == 0:
             writer.writeheader()
 
-        for i in range(1, num_personalities + 1):
+        for i in range(51, num_personalities + 51):
             prompt = generate_personality_prompt(i, archetypes, contexts, cultures, traits)
             print(f"Generating personality #{i} ({archetypes[(i - 1) % len(archetypes)]['type']})...")
             profile_text = call_gemini(prompt)
@@ -110,5 +110,5 @@ def generate_and_save_personalities(num_personalities: int):
     print(f"\n✅ Done! {num_personalities} diverse personalities saved to {OUTPUT_FILE}")
 
 if __name__ == "__main__":
-    TOTAL_PERSONALITIES = 50  # Modify as needed
+    TOTAL_PERSONALITIES = 150  # Modify as needed
     generate_and_save_personalities(TOTAL_PERSONALITIES)
