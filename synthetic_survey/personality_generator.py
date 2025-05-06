@@ -1,30 +1,42 @@
 import csv
 import time
-import random
 import json
+import random
+import sys
 import os
 from gemini_client import call_gemini
+from helpers import clean_response
 
-OUTPUT_FILE = "data/generated_personalities.csv"
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 ARCHETYPES_FILE = "data/archetypes.json"
+OUTPUT_FILE = "data/generated_personalities.csv"
 
-def load_archetypes(filepath):
+def load_archetypes(filepath: str) -> list:
+    """
+    Loads archetypes from a JSON file.
+
+    Args:
+        filepath (str): Path to the archetypes JSON file.
+
+    Returns:
+        list: List of archetype dictionaries.
+    """
     with open(filepath, 'r', encoding='utf-8') as file:
         return json.load(file)
 
-def generate_personality_prompt(i: int, archetypes) -> str:
+def generate_personality_prompt(i: int, archetypes: list) -> str:
     """
     Creates a diverse prompt to generate a unique personality.
 
     Args:
         i (int): The index number for uniqueness.
-        archetypes (list): List of archetypes loaded from the JSON file.
+        archetypes (list): List of archetypes loaded from JSON.
 
     Returns:
         str: A formatted prompt string.
     """
     archetype = random.choice(archetypes)
-
     prompt = (
         f"Generate a unique and detailed user personality profile for a web usability study.\n\n"
         f"User Archetype: {archetype['type']}\n"
@@ -33,32 +45,20 @@ def generate_personality_prompt(i: int, archetypes) -> str:
         f"- Name, Age, Occupation (fictional)\n"
         f"- Tech savviness\n"
         f"- Browsing habits\n"
-        f"- Design preferences (be specific: colors, typography, animations, etc.)\n"
+        f"- Design preferences (specific: colors, typography, animations, etc.)\n"
         f"- Web usability traits\n"
         f"- Frustrations & expectations when using websites\n"
-        f"- Additional unique details to make the user distinct\n\n"
-        f"Make sure this profile is significantly different from others and includes rich details. Label it as Profile #{i}."
+        f"- Unique personal notes\n\n"
+        f"Make sure this profile is detailed and distinct. Label it as Profile #{i}."
     )
     return prompt
-
-def clean_response(text: str) -> str:
-    """
-    Cleans the AI response to be a single line suitable for CSV.
-
-    Args:
-        text (str): The raw AI response.
-
-    Returns:
-        str: The cleaned response with no internal newlines.
-    """
-    return ' '.join(text.strip().splitlines()).replace('"', '""')
 
 def generate_and_save_personalities(num_personalities: int):
     """
     Generates personalities using the Gemini API and saves them to a CSV file.
 
     Args:
-        num_personalities (int): The number of personalities to generate.
+        num_personalities (int): Number of personalities to generate.
     """
     archetypes = load_archetypes(ARCHETYPES_FILE)
     fieldnames = ['id', 'profile_description']
@@ -76,7 +76,7 @@ def generate_and_save_personalities(num_personalities: int):
             profile_text = call_gemini(prompt)
 
             if not profile_text.strip():
-                print(f"Warning: Empty response for profile #{i}, skipping.")
+                print(f"⚠️ Warning: Empty response for profile #{i}, skipping.")
                 continue
 
             cleaned_text = clean_response(profile_text)
@@ -92,5 +92,5 @@ def generate_and_save_personalities(num_personalities: int):
     print(f"\n✅ Done! {num_personalities} diverse personalities saved to {OUTPUT_FILE}")
 
 if __name__ == "__main__":
-    TOTAL_PERSONALITIES = 50
+    TOTAL_PERSONALITIES = 50  # Modify as needed
     generate_and_save_personalities(TOTAL_PERSONALITIES)

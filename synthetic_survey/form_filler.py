@@ -1,13 +1,16 @@
 import csv
 import datetime
-import json
 import time
-import random
+import json
 from gemini_client import call_gemini
+from typing import Optional, Dict
+from helpers import random_timestamp, clean_json_response
 
+# Paths
 INPUT_FILE = "data/generated_personalities.csv"
-OUTPUT_FILE = "data/response_form.csv"
+OUTPUT_FILE = "data/survey_responses.csv"
 
+# Constants
 FIELDNAMES = [
     "Timestamp",
     "Do you have any background in web development or design?  ",
@@ -27,9 +30,14 @@ FIELDNAMES = [
     "If you answered yes to the question above, please leave a way of contact here:"
 ]
 
-def build_prompt(profile_desc):
-    """Builds the full prompt to send to Gemini with strict answer choices."""
+# Timestamp range (March 13, 2025 → now)
+START_DATE = datetime.datetime(2025, 3, 13, 0, 0, 0)
+END_DATE = datetime.datetime.now()
 
+def build_prompt(profile_desc: str) -> str:
+    """
+    Builds the full prompt to send to Gemini with strict answer choices.
+    """
     return f"""
 You are filling out a web interface preferences survey as the following user:
 
@@ -60,22 +68,14 @@ Provide your answers in JSON format like this:
 Be precise. Only pick from the choices listed above without inventing new wording.
 """
 
-def parse_response(json_str):
-    """Parses the Gemini JSON output into our CSV row format."""
+def parse_response(json_str: str) -> Optional[Dict]:
+    """
+    Parses the Gemini JSON output into our CSV row format.
+    """
     try:
-        # Clean: remove ```json ... ``` code block if present
-        cleaned = json_str.strip()
-        if cleaned.startswith("```json"):
-            cleaned = cleaned[7:]
-        if cleaned.startswith("```"):
-            cleaned = cleaned[3:]
-        if cleaned.endswith("```"):
-            cleaned = cleaned[:-3]
-
-        cleaned = cleaned.strip()
-
+        cleaned = clean_json_response(json_str)
         data = json.loads(cleaned)
-        
+
         checkout_value = data.get("When shopping online, which two features do you value most in the checkout process?", "")
         if isinstance(checkout_value, list):
             checkout_str = ", ".join(checkout_value)
@@ -100,17 +100,8 @@ def parse_response(json_str):
             "If you answered yes to the question above, please leave a way of contact here:": data.get("If you answered yes to the question above, please leave a way of contact here:", "").strip()
         }
     except json.JSONDecodeError as e:
-        print(f"JSON decode error: {e}")
+        print(f"⚠️ JSON decode error: {e}")
         return None
-
-def random_timestamp(start_date, end_date):
-    """
-    Generates a random datetime between two datetime objects.
-    """
-    delta = end_date - start_date
-    int_delta = int(delta.total_seconds())
-    random_second = random.randint(0, int_delta)
-    return start_date + datetime.timedelta(seconds=random_second)
 
 def main():
     with open(INPUT_FILE, mode='r', encoding='utf-8') as infile, \
@@ -120,29 +111,27 @@ def main():
         writer = csv.DictWriter(outfile, fieldnames=FIELDNAMES)
         writer.writeheader()
 
+        count = 0
         for row in reader:
             profile_desc = row['profile_description']
             prompt = build_prompt(profile_desc)
-            print(f"Generating survey response for profile...")
+            print(f"Generating survey response for profile #{count}...")
+            count += 1
 
             gemini_response = call_gemini(prompt)
-
             survey_data = parse_response(gemini_response)
 
             if survey_data:
-                start_date = datetime.datetime(2025, 3, 13, 0, 0, 0)
-                end_date = datetime.datetime.now()
-                rand_dt = random_timestamp(start_date, end_date)
+                rand_dt = random_timestamp(START_DATE, END_DATE)
                 timestamp = rand_dt.strftime("%m/%d/%Y %H:%M:%S")
                 survey_data["Timestamp"] = timestamp
                 writer.writerow(survey_data)
             else:
-                print("Skipping due to parsing error.")
+                print("⚠️ Skipping due to parsing error.")
 
             time.sleep(0.5)
 
     print(f"✅ Done! Responses saved to {OUTPUT_FILE}")
-
 
 if __name__ == "__main__":
     main()

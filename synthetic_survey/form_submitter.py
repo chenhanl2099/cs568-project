@@ -1,15 +1,12 @@
 import csv
 import requests
 import time
-import re
+from helpers import smart_split
 
-# Google Form submission URL
 FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDKYlPuLiK9KheYt8LoDjxYkafQNUw2uNm64mq8Gk2nrbVDA/formResponse'
 
-# CSV file to read from
-CSV_FILE = 'data/response_form.csv'
+CSV_FILE = 'data/survey_responses.csv'
 
-# Mapping from CSV columns to Google Form entry IDs
 FIELD_MAPPING = {
     "Do you have any background in web development or design?  ": 'entry.1409240751',
     "  How often do you interact with websites or web apps?  ": 'entry.1608125',
@@ -28,11 +25,16 @@ FIELD_MAPPING = {
     "If you answered yes to the question above, please leave a way of contact here:": 'entry.1314793666'
 }
 
-def smart_split(s):
-    # Splits on commas not inside parentheses
-    return [x.strip() for x in re.split(r',\s*(?![^()]*\))', s) if x.strip()]
+def submit_response(row: dict) -> requests.Response:
+    """
+    Submits a single row of survey data to the Google Form.
 
-def submit_response(row):
+    Args:
+        row (dict): A dictionary of CSV row data.
+
+    Returns:
+        Response: The HTTP response object.
+    """
     data = {}
     for csv_field, entry_id in FIELD_MAPPING.items():
         value = row.get(csv_field, "").strip()
@@ -47,24 +49,23 @@ def submit_response(row):
     for key, val in data.items():
         print(f"{key}: {val}")
 
-    response = requests.post(FORM_URL, data=data)
-    return response
+    return requests.post(FORM_URL, data=data)
 
 def main():
     with open(CSV_FILE, mode='r', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         count = 0
         for row in reader:
-            print(f"Submitting row {count + 1}...")
+            print(f"\n🚀 Submitting row {count + 1}...")
             response = submit_response(row)
             if response.status_code == 200:
                 print(f"✅ Row {count + 1} submitted successfully.")
             else:
                 print(f"⚠️ Row {count + 1} may have failed (status {response.status_code}).")
             count += 1
-            time.sleep(1)  # polite pause to avoid spam
+            time.sleep(0.5)
 
-    print(f"✅ Done! Submitted {count} rows.")
+    print(f"\n✅ Done! Submitted {count} rows.")
 
 if __name__ == "__main__":
     main()

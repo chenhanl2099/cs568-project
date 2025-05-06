@@ -1,4 +1,4 @@
-import google.generativeai as genai # type: ignore
+import google.generativeai as genai  # type: ignore
 
 # Set your API key here
 API_KEY = "AIzaSyBniucNqgWVP89EbCJeh-OPg22Owq5GDV4"
@@ -8,7 +8,7 @@ model = genai.GenerativeModel('gemini-2.0-flash-lite')
 
 def call_gemini(prompt: str) -> str:
     """
-    Sends a prompt to the Gemini 1.5 Flash API using the Python SDK and returns the response as a string.
+    Sends a prompt to the Gemini API and returns the response as a string.
 
     Args:
         prompt (str): The input prompt to send to the model.
