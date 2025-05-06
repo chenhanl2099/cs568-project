@@ -38,11 +38,11 @@ C:.
 
 6. Return only the modified or new code files in full and ensure your code follows consistent style conventions for future maintainability.
 7. Features to include: 
-1. Create a page style for a single item detail on a shopping website. 
-2. Put all the pictures together and show only one at a time. Users can view different pictures by clicking the arrows on the left and right sides.
-3. Display several small dots arranged horizontally below the picture to provide users with a reference of "which page of pictures they are on now".
-4. Allow users to use the magnifier function. The magnifier icon appears in the lower right corner of the picture element. When the user clicks the magnifier icon, the user's cursor can be used as a magnifier, providing the user with a square magnifier perspective.
-5. Add some animations appropriately to make the user interaction smoother and more responsive.
+  1. Create a page style for a single item detail on a shopping website. 
+  2. Put all the pictures together and show only one at a time. Users can view different pictures by clicking the arrows on the left and right sides.
+  3. Display several small dots arranged horizontally below the picture to provide users with a reference of "which page of pictures they are on now".
+  4. Allow users to use the magnifier function. The magnifier icon appears in the lower right corner of the picture element. When the user clicks the magnifier icon, the user's cursor can be used as a magnifier, providing the user with a square magnifier perspective.
+  5. Add some animations appropriately to make the user interaction smoother and more responsive.
 8. Current file content: (to enter)
 Respond should include the file names followed by their content in full, and followed by any external library used.
 
