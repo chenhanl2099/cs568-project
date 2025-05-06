@@ -5,38 +5,17 @@ import json
 from gemini_client import call_gemini
 from typing import Optional, Dict
 from helpers import random_timestamp, clean_json_response
+from survey_config import FIELDNAMES
 
-# Paths
 INPUT_FILE = "data/generated_personalities.csv"
 OUTPUT_FILE = "data/survey_responses.csv"
 
-# Constants
-FIELDNAMES = [
-    "Timestamp",
-    "Do you have any background in web development or design?  ",
-    "  How often do you interact with websites or web apps?  ",
-    "What device do you use most often to browse the web? ",
-    "Please rate how important the following aspects are to you when using a website (with 1 being the least important and 5 the most):   [Aesthetic design (visuals)]",
-    "Please rate how important the following aspects are to you when using a website (with 1 being the least important and 5 the most):   [Responsiveness (adapts to screen size)]",
-    'Please rate how important the following aspects are to you when using a website (with 1 being the least important and 5 the most):   [Accessibility (easy for all users, including with disabilities)]',
-    "Please rate how important the following aspects are to you when using a website (with 1 being the least important and 5 the most):   [Navigation (easy to find things)]",
-    "Please rate how important the following aspects are to you when using a website (with 1 being the least important and 5 the most):   [Page speed and performance]",
-    "When visiting a website, which of these annoys you the most?",
-    "  Which design style do you personally prefer?  ",
-    "When a button or link is clicked, how important is it that there’s immediate feedback (like a color change or loading spinner)?",
-    "When shopping online, which two feature do you value most in the checkout process?  ",
-    "Have you ever used a website that felt especially well-designed? What made it stand out to you? ",
-    "Would you be interested in participating in future tests of new website designs (e.g., A/B testing)?  ",
-    "If you answered yes to the question above, please leave a way of contact here:"
-]
-
-# Timestamp range (March 13, 2025 → now)
 START_DATE = datetime.datetime(2025, 3, 13, 0, 0, 0)
 END_DATE = datetime.datetime.now()
 
 def build_prompt(profile_desc: str) -> str:
     """
-    Builds the full prompt to send to Gemini with strict answer choices.
+    Builds the full prompt to send to Gemini with strict answer choices, using FIELDNAMES directly.
     """
     return f"""
 You are filling out a web interface preferences survey as the following user:
@@ -48,21 +27,21 @@ You must ONLY pick answers from the provided answer choices exactly as listed be
 Provide your answers in JSON format like this:
 
 {{
-    "Do you have any background in web development or design?": "[choose one: Yes, I am a professional developer/designer / Yes, I have some experience (e.g., hobbyist, student) / No, I am a general user]",
-    "How often do you interact with websites or web apps?": "[choose one: More than 20 times a day / Between 5 to 20 times a day / Up to 5 times a day / Rarely]",
-    "What device do you use most often to browse the web?": "[choose one: Desktop/Laptop / Tablet / Mobile phone / Other…]",
-    "Aesthetic design (visuals)": [choose a number between 1 and 5],
-    "Responsiveness (adapts to screen size)": [choose a number between 1 and 5],
-    "Accessibility (easy for all users, including with disabilities)": [choose a number between 1 and 5],
-    "Navigation (easy to find things)": [choose a number between 1 and 5],
-    "Page speed and performance": [choose a number between 1 and 5],
-    "When visiting a website, which of these annoys you the most?": "[choose one: Cluttered or messy design / Slow loading times / Poor mobile adaptation / Difficult navigation / Inconsistent fonts/colors / Other…]",
-    "Which design style do you personally prefer?": "[choose one: Minimalist and clean / Bold and colorful / Classic and traditional / Futuristic/innovative / No strong preference]",
-    "When a button or link is clicked, how important is it that there’s immediate feedback (like a color change or loading spinner)?": "[choose one: Very important / Somewhat important / Not important]",
-    "When shopping online, which two features do you value most in the checkout process?": "[choose exactly two: Clear price breakdown (tax, shipping, etc.) / Fast and simple checkout flow / Trust signals (security badges, reviews) / Multiple payment options / Ability to easily edit cart items / Other…]",
-    "Have you ever used a website that felt especially well-designed? What made it stand out to you?": "[optional: provide a short sentence]",
-    "Would you be interested in participating in future tests of new website designs (e.g., A/B testing)?": "[choose one: Yes / No]",
-    "If you answered yes to the question above, please leave a way of contact here:": "[optional: provide a fake email address if Yes, otherwise leave blank]"
+    "{FIELDNAMES[1]}": "[choose one: Yes, I am a professional developer/designer / Yes, I have some experience (e.g., hobbyist, student) / No, I am a general user]",
+    "{FIELDNAMES[2]}": "[choose one: More than 20 times a day / Between 5 to 20 times a day / Up to 5 times a day / Rarely]",
+    "{FIELDNAMES[3]}": "[choose one: Desktop/Laptop / Tablet / Mobile phone / Other…]",
+    "{FIELDNAMES[4]}": [choose a number between 1 and 5],
+    "{FIELDNAMES[5]}": [choose a number between 1 and 5],
+    "{FIELDNAMES[6]}": [choose a number between 1 and 5],
+    "{FIELDNAMES[7]}": [choose a number between 1 and 5],
+    "{FIELDNAMES[8]}": [choose a number between 1 and 5],
+    "{FIELDNAMES[9]}": "[choose one: Cluttered or messy design / Slow loading times / Poor mobile adaptation / Difficult navigation / Inconsistent fonts/colors / Other…]",
+    "{FIELDNAMES[10]}": "[choose one: Minimalist and clean / Bold and colorful / Classic and traditional / Futuristic/innovative / No strong preference]",
+    "{FIELDNAMES[11]}": "[choose one: Very important / Somewhat important / Not important]",
+    "{FIELDNAMES[12]}": "[choose exactly two: Clear price breakdown (tax, shipping, etc.) / Fast and simple checkout flow / Trust signals (security badges, reviews) / Multiple payment options / Ability to easily edit cart items / Other…]",
+    "{FIELDNAMES[13]}": "[optional: provide a short sentence]",
+    "{FIELDNAMES[14]}": "[choose one: Yes / No]",
+    "{FIELDNAMES[15]}": "[optional: provide a fake email address if Yes, otherwise leave blank]"
 }}
 
 Be precise. Only pick from the choices listed above without inventing new wording.
@@ -70,34 +49,34 @@ Be precise. Only pick from the choices listed above without inventing new wordin
 
 def parse_response(json_str: str) -> Optional[Dict]:
     """
-    Parses the Gemini JSON output into our CSV row format.
+    Parses the Gemini JSON output into our CSV row format using FIELDNAMES directly.
     """
     try:
         cleaned = clean_json_response(json_str)
         data = json.loads(cleaned)
 
-        checkout_value = data.get("When shopping online, which two features do you value most in the checkout process?", "")
+        checkout_value = data.get(FIELDNAMES[12], "")
         if isinstance(checkout_value, list):
             checkout_str = ", ".join(checkout_value)
         else:
             checkout_str = checkout_value.strip()
 
         return {
-            "Do you have any background in web development or design?  ": data.get("Do you have any background in web development or design?", "").strip(),
-            "  How often do you interact with websites or web apps?  ": data.get("How often do you interact with websites or web apps?", "").strip(),
-            "What device do you use most often to browse the web? ": data.get("What device do you use most often to browse the web?", "").strip(),
-            "Please rate how important the following aspects are to you when using a website (with 1 being the least important and 5 the most):   [Aesthetic design (visuals)]": data.get("Aesthetic design (visuals)", 3),
-            "Please rate how important the following aspects are to you when using a website (with 1 being the least important and 5 the most):   [Responsiveness (adapts to screen size)]": data.get("Responsiveness (adapts to screen size)", 3),
-            'Please rate how important the following aspects are to you when using a website (with 1 being the least important and 5 the most):   [Accessibility (easy for all users, including with disabilities)]': data.get("Accessibility (easy for all users, including with disabilities)", 3),
-            "Please rate how important the following aspects are to you when using a website (with 1 being the least important and 5 the most):   [Navigation (easy to find things)]": data.get("Navigation (easy to find things)", 3),
-            "Please rate how important the following aspects are to you when using a website (with 1 being the least important and 5 the most):   [Page speed and performance]": data.get("Page speed and performance", 3),
-            "When visiting a website, which of these annoys you the most?": data.get("When visiting a website, which of these annoys you the most?", "").strip(),
-            "  Which design style do you personally prefer?  ": data.get("Which design style do you personally prefer?", "").strip(),
-            "When a button or link is clicked, how important is it that there’s immediate feedback (like a color change or loading spinner)?": data.get("When a button or link is clicked, how important is it that there’s immediate feedback (like a color change or loading spinner)?", "").strip(),
-            "When shopping online, which two feature do you value most in the checkout process?  ": checkout_str,
-            "Have you ever used a website that felt especially well-designed? What made it stand out to you? ": data.get("Have you ever used a website that felt especially well-designed? What made it stand out to you?", "").strip(),
-            "Would you be interested in participating in future tests of new website designs (e.g., A/B testing)?  ": data.get("Would you be interested in participating in future tests of new website designs (e.g., A/B testing)?", "").strip(),
-            "If you answered yes to the question above, please leave a way of contact here:": data.get("If you answered yes to the question above, please leave a way of contact here:", "").strip()
+            FIELDNAMES[1]: data.get(FIELDNAMES[1], "").strip(),
+            FIELDNAMES[2]: data.get(FIELDNAMES[2], "").strip(),
+            FIELDNAMES[3]: data.get(FIELDNAMES[3], "").strip(),
+            FIELDNAMES[4]: data.get(FIELDNAMES[4], 3),
+            FIELDNAMES[5]: data.get(FIELDNAMES[5], 3),
+            FIELDNAMES[6]: data.get(FIELDNAMES[6], 3),
+            FIELDNAMES[7]: data.get(FIELDNAMES[7], 3),
+            FIELDNAMES[8]: data.get(FIELDNAMES[8], 3),
+            FIELDNAMES[9]: data.get(FIELDNAMES[9], "").strip(),
+            FIELDNAMES[10]: data.get(FIELDNAMES[10], "").strip(),
+            FIELDNAMES[11]: data.get(FIELDNAMES[11], "").strip(),
+            FIELDNAMES[12]: checkout_str,
+            FIELDNAMES[13]: data.get(FIELDNAMES[13], "").strip(),
+            FIELDNAMES[14]: data.get(FIELDNAMES[14], "").strip(),
+            FIELDNAMES[15]: data.get(FIELDNAMES[15], "").strip()
         }
     except json.JSONDecodeError as e:
         print(f"⚠️ JSON decode error: {e}")
