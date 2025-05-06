@@ -1,0 +1,90 @@
+[
+    {
+        "type": "Creative Visionary",
+        "description": "A user who values bold, colorful, and artistic designs. They work in creative fields and love expressive, innovative web interfaces."
+    },
+    {
+        "type": "Accessibility Advocate",
+        "description": "A user deeply concerned with accessibility—either due to personal needs or as an advocate. Prioritizes high contrast, readable fonts, keyboard navigation, and screen-reader compatibility."
+    },
+    {
+        "type": "Tech Enthusiast",
+        "description": "A user who enjoys exploring new technology. Loves advanced features, cutting-edge design, and lots of customization options."
+    },
+    {
+        "type": "Casual Browser",
+        "description": "A light user who mostly browses for news, shopping, and emails. Prefers clean, simple, and easy-to-use websites."
+    },
+    {
+        "type": "E-commerce Power User",
+        "description": "Shops online frequently. Looks for fast checkouts, price comparisons, trust signals, reviews, and secure payment options."
+    },
+    {
+        "type": "Senior User",
+        "description": "An older adult who is less tech-savvy. Prefers large fonts, simple navigation, and clear instructions."
+    },
+    {
+        "type": "Mobile-First User",
+        "description": "Browses almost exclusively on a smartphone. Values responsive design, fast loading, and thumb-friendly navigation."
+    },
+    {
+        "type": "Gamer",
+        "description": "Spends hours on gaming platforms and forums. Loves dark themes, high performance, and interactive elements."
+    },
+    {
+        "type": "News Junkie",
+        "description": "Constantly reads news and articles. Wants clean typography, no clutter, and a focus on readability and up-to-date content."
+    },
+    {
+        "type": "Blogger/Content Creator",
+        "description": "Frequently publishes content. Prioritizes intuitive content management, distraction-free writing environments, and responsive design."
+    },
+    {
+        "type": "Student/Researcher",
+        "description": "Browses academic resources and databases. Needs fast-loading, well-structured, citation-friendly pages with advanced search tools."
+    },
+    {
+        "type": "Social Media Enthusiast",
+        "description": "Spends hours on social media. Loves sleek, engaging designs and seamless notifications."
+    },
+    {
+        "type": "Privacy-Conscious User",
+        "description": "Cares deeply about privacy. Values clear data policies, minimal tracking, and customizable privacy settings."
+    },
+    {
+        "type": "Environmental Advocate",
+        "description": "Cares about sustainability. Prefers green-themed designs and seeks eco-friendly brands and transparency on environmental impact."
+    },
+    {
+        "type": "Health & Wellness Seeker",
+        "description": "Uses wellness apps and health sites frequently. Wants calm, clean design and clear, trustworthy information."
+    },
+    {
+        "type": "DIY Hobbyist",
+        "description": "Engages with tutorials and project sites. Prefers detailed guides, clear visuals, and easy-to-search resources."
+    },
+    {
+        "type": "Frequent Traveler",
+        "description": "Uses booking and travel sites often. Prioritizes fast-loading, reliable, and mobile-optimized sites with clear pricing."
+    },
+    {
+        "type": "Finance-Focused User",
+        "description": "Manages investments and banking online. Looks for high-security, clear data visualizations, and intuitive dashboards."
+    },
+    {
+        "type": "Entertainment Buff",
+        "description": "Streams movies, music, and TV. Wants immersive, fast-loading media platforms with simple navigation."
+    },
+    {
+        "type": "Language Learner",
+        "description": "Uses language learning apps and websites. Values interactive elements, gamification, and intuitive design."
+    },
+    {
+        "type": "Parent/Caregiver",
+        "description": "Seeks family-focused content. Wants safe, simple-to-navigate, and trustworthy sites for parenting tips and kids’ resources."
+    },
+    {
+        "type": "Remote Worker",
+        "description": "Uses productivity and collaboration tools daily. Wants responsive, clean UIs with strong focus on usability and performance."
+    }
+]
