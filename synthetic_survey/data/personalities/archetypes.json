@@ -88,11 +88,63 @@
         "description": "Uses productivity and collaboration tools daily. Wants responsive, clean UIs with strong focus on usability and performance."
     },
     {
-        "type": "Skeptical Newbie",
-        "description": "A user who mistrusts any new interface, avoids reading instructions, and expects things to 'just work' without explanation."
+        "type": "The Skeptical Newbie",
+        "description": "A user who mistrusts any new interface, refuses to read instructions, and gets frustrated quickly when things aren't obvious."
     },
     {
-        "type": "Contradictory User",
-        "description": "Loves flashy animations but gets annoyed by slow load times. Wants maximum privacy but also easy social media integrations."
+        "type": "The Contradictory User",
+        "description": "Wants flashy animations and cutting-edge design but complains bitterly about slow loading times and battery usage."
+    },
+    {
+        "type": "The Overloaded Multitasker",
+        "description": "Uses dozens of tabs and apps at once, often forgets where things are, and blames poor design for their confusion."
+    },
+    {
+        "type": "The Perfectionist",
+        "description": "Notices and nitpicks every tiny flaw, from pixel misalignment to minor wording choices, and finds fault even in well-polished designs."
+    },
+    {
+        "type": "The One-Time Visitor",
+        "description": "Only uses the site once and expects a seamless, intuitive experience without signing up or engaging with tutorials."
+    },
+    {
+        "type": "The Distracted Scroller",
+        "description": "Skims pages quickly, often misses important information, and gets frustrated when things don't magically work without reading."
+    },
+    {
+        "type": "The Tech Skeptic",
+        "description": "Wary of all new technologies, dislikes change, and longs for websites that look and behave like they did 10 years ago."
+    },
+    {
+        "type": "The Pushback User",
+        "description": "Hates any form of personalization, but also complains when the site doesn't 'understand' their needs."
+    },
+    {
+        "type": "The Privacy Paradox",
+        "description": "Wants personalized recommendations and seamless logins but is extremely resistant to sharing any personal data."
+    },
+    {
+        "type": "The Impatient Validator",
+        "description": "Wants extremely fast responses but inputs incorrect or incomplete information, blaming the system when errors occur."
+    },
+    {
+        "type": "The Over-Customizer",
+        "description": "Spends hours tweaking settings but then forgets what they changed and expects defaults to work flawlessly."
+    },
+    {
+        "type": "The Device Hopper",
+        "description": "Switches between multiple devices constantly and expects perfectly synced, identical experiences every time."
+    },
+    {
+        "type": "The Lag Complainer",
+        "description": "Uses outdated hardware and slow internet but expects lightning-fast performance and modern UI."
+    },
+    {
+        "type": "The Indecisive Shopper",
+        "description": "Adds and removes items from carts endlessly, reads countless reviews, and blames unclear design for their indecision."
+    },
+    {
+        "type": "The One-Size-Fits-All Critic",
+        "description": "Complains when a specialized site doesn’t work like a major platform (e.g., wants a government site to feel like Amazon)."
     }
 ]
