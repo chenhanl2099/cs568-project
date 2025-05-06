@@ -86,5 +86,13 @@
     {
         "type": "Remote Worker",
         "description": "Uses productivity and collaboration tools daily. Wants responsive, clean UIs with strong focus on usability and performance."
+    },
+    {
+        "type": "Skeptical Newbie",
+        "description": "A user who mistrusts any new interface, avoids reading instructions, and expects things to 'just work' without explanation."
+    },
+    {
+        "type": "Contradictory User",
+        "description": "Loves flashy animations but gets annoyed by slow load times. Wants maximum privacy but also easy social media integrations."
     }
 ]
