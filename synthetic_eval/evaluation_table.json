@@ -1,0 +1,122 @@
+{
+    "user_id": "",
+    "scores": [
+    {
+        "Category": "UI Design",
+        "Criteria": "Aesthetics",
+        "Score": null,
+        "Scoring Criteria": "Color palette, font style, spatiality, uniformity",
+        "Technical Challenges": 3,
+        "Common GPT Issues": "Lack of advanced color schemes, cluttered pages, stacked layouts",
+        "Prompt Difficulty": "Whether style, color specs, or reference sites are specified"
+    },
+    {
+        "Category": "UI Design",
+        "Criteria": "Design Pattern",
+        "Score": null,
+        "Scoring Criteria": "Whether to use standard component structure, such as cards, form groups, responsive grid",
+        "Technical Challenges": 2,
+        "Common GPT Issues": "Stacked implementation, no component abstraction",
+        "Prompt Difficulty": "Whether component encapsulation and reusability design are required"
+    },
+    {
+        "Category": "UI Design",
+        "Criteria": "Animation",
+        "Score": null,
+        "Scoring Criteria": "Whether animation exists, is reasonable, and enhances the interactive experience.",
+        "Technical Challenges": 4,
+        "Common GPT Issues": "Missing hover/transition, abrupt or laggy animations",
+        "Prompt Difficulty": "Whether loading animation, smooth transitions, or micro-interactions are required"
+    },
+    {
+        "Category": "UX & Interaction",
+        "Criteria": "Interaction Logic",
+        "Score": null,
+        "Scoring Criteria": "Clear logic of clicking, inputting, switching, reasonable status update.",
+        "Technical Challenges": 3,
+        "Common GPT Issues": "Unbound interaction logic, no form validation",
+        "Prompt Difficulty": "Whether nested interaction or complex component state is involved"
+    },
+    {
+        "Category": "UX & Interaction",
+        "Criteria": "Smoothness",
+        "Score": null,
+        "Scoring Criteria": "Whether the page response is smooth, and whether it handles asynchrony/throttling.",
+        "Technical Challenges": 4,
+        "Common GPT Issues": "No loading indication, no debounce handling",
+        "Prompt Difficulty": "Whether asynchronous loading or user response optimization is required"
+    },
+    {
+        "Category": "UX & Interaction",
+        "Criteria": "Error Handling",
+        "Score": null,
+        "Scoring Criteria": "Error alerts, empty states, boundary scenarios are handled completely.",
+        "Technical Challenges": 3,
+        "Common GPT Issues": "No form validation, no feedback prompts",
+        "Prompt Difficulty": "Whether complete boundary cases or prompt messages are required"
+    },
+    {
+        "Category": "Code Quality",
+        "Criteria": "Code Structure",
+        "Score": null,
+        "Scoring Criteria": "Whether modularization, clear layering, in line with the project specification",
+        "Technical Challenges": 3,
+        "Common GPT Issues": "All logic in App.js, no reusable structure",
+        "Prompt Difficulty": "Whether module division or structural requirements are specified"
+    },
+    {
+        "Category": "Code Quality",
+        "Criteria": "Maintainability",
+        "Score": null,
+        "Scoring Criteria": "Naming conventions, annotations, readability and expandability.",
+        "Technical Challenges": 2,
+        "Common GPT Issues": "Inconsistent naming, repeated code",
+        "Prompt Difficulty": "Whether future expandability or team collaboration is considered"
+    },
+    {
+        "Category": "Data & Functionality",
+        "Criteria": "Novel Dataset Use",
+        "Score": null,
+        "Scoring Criteria": "Is the data used interesting/unique/generative?",
+        "Technical Challenges": 3,
+        "Common GPT Issues": "Only uses mock data",
+        "Prompt Difficulty": "Whether APIs are used or synthetic data is required"
+    },
+    {
+        "Category": "Data & Functionality",
+        "Criteria": "Functional Complexity",
+        "Score": null,
+        "Scoring Criteria": "Whether to implement complex logic, such as state management, permission control",
+        "Technical Challenges": 4,
+        "Common GPT Issues": "Confused state, incomplete logic flow",
+        "Prompt Difficulty": "Whether complex function integration or edge logic is required"
+    },
+    {
+        "Category": "GPT-Specific Challenges",
+        "Criteria": "Template Avoidance",
+        "Score": null,
+        "Scoring Criteria": "Whether to get rid of the template structure and build unique pages",
+        "Technical Challenges": 3,
+        "Common GPT Issues": "Depends on CRA/Vite default template",
+        "Prompt Difficulty": "Whether original layout/structure is required"
+    },
+    {
+        "Category": "GPT-Specific Challenges",
+        "Criteria": "Human-AI Collaboration",
+        "Score": null,
+        "Scoring Criteria": "Does it require a lot of manual intervention to use",
+        "Technical Challenges": 4,
+        "Common GPT Issues": "Code looks fine but fails at runtime",
+        "Prompt Difficulty": "Whether only the final goal is given without technical details"
+    },
+    {
+        "Category": "GPT-Specific Challenges",
+        "Criteria": "Creativity Barrier",
+        "Score": null,
+        "Scoring Criteria": "Is there creative content, e.g., cross-component combinations/AI calls?",
+        "Technical Challenges": 5,
+        "Common GPT Issues": "Only combines existing components, lacks creative composition",
+        "Prompt Difficulty": "Whether highly integrated or innovative ideas are proposed"
+    }
+]
+}
