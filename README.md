@@ -1,56 +1,79 @@
-# Necessary Packages to be Installed:
-```
+# Getting Started with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Additional Package
+npm install styled-components
+npm install lucide-react
+npm install @mui/icons-material recharts
 npm install react-icons framer-motion
 npm install lucide-react
 npm install @mui/material @emotion/react @emotion/styled
 npm install @mui/icons-material
-```
-
-# Process:
-1. General propmt:
-```
-You are an expert front-end developer with deep knowledge of UI design, code style consistency, component library integration, and animation principles. Your task is to transform an existing low-quality codebase into a polished, professional responsive e-commerce website.
-1. Apply professional UI/UX design patterns to improve visual consistency, spacing, alignment, typography, color usage, and responsiveness across devices.
-2. Ensure all user-facing components have intuitive interactivity with clear affordances and accessible behavior. Prioritize smooth state changes and edge case handling.
-3. You may choose any modern charting or UI component library that best fits professional-grade requirements and is optimized for responsiveness and maintainability.
-4. Maximize modularity, maintainability, and clarity through consistent naming, reusable components, minimal inline styles, and in-code documentation of complex logic—without modifying app-level files.
-5. Current project structure:
-C:.
-│   App.css
-│   App.js
-│   App.test.js
-│   index.css
-│   index.js
-│   logo.svg
-│   reportWebVitals.js
-│   setupTests.js
-│   
-├───components
-│       HomePage.js
-│       ItemDetailPage.js
-│       LoginPage.js
-│       PriceTrackingPage.js
-│       SignupPage.js
-│       UserSettingsPage.js
-│
-├───data
-│       itemData.json
-│
-└───utils
-│     fakeUserService.js
-
-6. Return only the modified or new code files in full and ensure your code follows consistent style conventions for future maintainability.
-7. Features to include: 
-  1. Create a page style for a single item detail on a shopping website. 
-  2. Put all the pictures together and show only one at a time. Users can view different pictures by clicking the arrows on the left and right sides.
-  3. Display several small dots arranged horizontally below the picture to provide users with a reference of "which page of pictures they are on now".
-  4. Allow users to use the magnifier function. The magnifier icon appears in the lower right corner of the picture element. When the user clicks the magnifier icon, the user's cursor can be used as a magnifier, providing the user with a square magnifier perspective.
-  5. Add some animations appropriately to make the user interaction smoother and more responsive.
-8. Current file content: (to enter)
-Respond should include the file names followed by their content in full, and followed by any external library used.
-```
-
-2. clarified itemData.json file, and asked for necessary packages:
-```
-first, any package i need to install? secondly, i have my itemdata.json here, adjust code to satisfy this
-```
