@@ -1,0 +1,325 @@
+/* General Page Styles */
+.pageContainer {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #333;
+}
+
+.breadcrumbs {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.breadcrumbs a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs span {
+    margin: 0 5px;
+}
+
+.notFound {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2rem;
+}
+
+/* Layout for Image and Details */
+.detailLayout {
+    display: flex;
+    flex-direction: column; /* Stack on small screens */
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .detailLayout {
+        flex-direction: row; /* Side-by-side on larger screens */
+    }
+}
+
+/* Image Gallery Styles */
+.imageGallery {
+    flex: 1; /* Takes up available space, good for responsiveness */
+    max-width: 100%; /* Ensure it doesn't overflow on small screens */
+    min-width: 0; /* Fix for flex item overflow */
+}
+
+@media (min-width: 768px) {
+    .imageGallery {
+        flex-basis: 50%; /* Roughly half the width on larger screens */
+        max-width: 50%;
+    }
+}
+
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    /* Maintain aspect ratio, e.g., 4:3 or 1:1 */
+    /* For 1:1 aspect ratio: */
+    /* padding-top: 100%; */
+    /* For 4:3 aspect ratio: */
+    padding-top: 75%; /* (height / width) * 100 = (3/4) * 100 = 75% */
+    background-color: #f0f0f0; /* Placeholder while image loads or if no image */
+    border-radius: 8px;
+    overflow: hidden; /* Crucial for keeping image and magnifier within bounds */
+    cursor: crosshair; /* Default cursor when magnifier might be active */
+    transition: box-shadow 0.3s ease;
+}
+
+.imageContainer:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mainImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Or 'contain' based on preference */
+    display: block; /* Removes extra space below image */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+}
+
+/* Image Navigation Buttons */
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.2rem; /* Adjust icon size if using font icons */
+    z-index: 10;
+    transition: background-color 0.2s ease, opacity 0.3s ease;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navButton:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 1;
+}
+
+.navButton:focus {
+    outline: 2px solid var(--primary-color, #007bff); /* Use theme color if available */
+    outline-offset: 2px;
+}
+
+.prevButton {
+    left: 10px;
+}
+
+.nextButton {
+    right: 10px;
+}
+
+/* Magnifier Toggle Button */
+.magnifierToggle {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1rem; /* Adjust icon size */
+    z-index: 10;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.magnifierToggle:hover {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.magnifierToggle:focus {
+    outline: 2px solid var(--primary-color, #007bff);
+    outline-offset: 1px;
+}
+
+
+/* Magnifier Preview Pane */
+.magnifierPreview {
+    position: fixed; /* Fixed position relative to viewport, moves with cursor */
+    width: 150px; /* Size of the magnifier square */
+    height: 150px;
+    border: 2px solid #fff; /* White border for contrast */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 4px; /* Slightly rounded corners for the magnifier */
+    background-repeat: no-repeat;
+    pointer-events: none; /* Allows clicks to pass through to elements underneath if needed */
+    z-index: 100; /* Ensure it's on top */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.2s ease-in-out; /* Smooth appearance */
+    /* The background image and position will be set by JavaScript */
+}
+
+/* Show magnifier preview when active */
+.imageContainer .magnifierPreview {
+    opacity: 1;
+}
+
+
+/* Dot Indicators */
+.dotContainer {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dot:hover {
+    background-color: #aaa;
+    transform: scale(1.2);
+}
+
+.activeDot {
+    background-color: var(--primary-color, #007bff); /* Use theme color */
+    transform: scale(1.1);
+}
+
+/* Item Info Section */
+.itemInfo {
+    flex: 1;
+    padding-left: 0; /* No padding on small screens where it's stacked */
+}
+
+@media (min-width: 768px) {
+    .itemInfo {
+        flex-basis: 50%;
+        padding-left: 20px; /* Add padding when side-by-side */
+    }
+}
+
+.itemTitle {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #222;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.itemPrice {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--price-color, #28a745); /* Use theme color */
+    margin-bottom: 20px;
+}
+
+.itemDescription {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* Action Buttons */
+.actions {
+    display: flex;
+    gap: 15px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.primaryButton,
+.secondaryButton {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    text-decoration: none; /* For Link components styled as buttons */
+    display: inline-block; /* For Link components */
+    text-align: center;
+}
+
+.primaryButton {
+    background-color: var(--primary-color, #007bff);
+    color: white;
+}
+
+.primaryButton:hover {
+    background-color: var(--primary-hover-color, #0056b3);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+
+.secondaryButton {
+    background-color: #6c757d;
+    color: white;
+}
+
+.secondaryButton:hover {
+    background-color: #545b62;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+
+/* If using a Link as a button wrapper, ensure it fills */
+.secondaryButtonLink {
+    text-decoration: none;
+}
+
+
+/* Back Link */
+.backLinkContainer {
+    margin-top: 30px;
+    text-align: center; /* Center on small screens */
+}
+
+@media (min-width: 768px) {
+    .backLinkContainer {
+        text-align: left; /* Align left on larger screens */
+    }
+}
+
+.backLink {
+    color: var(--primary-color, #007bff);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.backLink:hover {
+    color: var(--primary-hover-color, #0056b3);
+    text-decoration: underline;
+}
+
+/* Animations & Transitions (examples - already integrated above) */
+/* Smooth image change for carousel - applied to .mainImage */
+/* .mainImage-enter { opacity: 0; transform: translateX(20px); } */
+/* .mainImage-enter-active { opacity: 1; transform: translateX(0); transition: opacity 300ms, transform 300ms; } */
+/* .mainImage-exit { opacity: 1; transform: translateX(0); } */
+/* .mainImage-exit-active { opacity: 0; transform: translateX(-20px); transition: opacity 300ms, transform 300ms; } */
