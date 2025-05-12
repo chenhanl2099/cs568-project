@@ -1,79 +1,65 @@
-# Getting Started with Create React App
+# AI-Assisted Frontend Code Enhancement
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project investigates the capabilities of large language models (LLMs) such as ChatGPT, Claude, Gemini, and DeepSeek in enhancing poorly designed frontend code. It focuses on improving usability, aesthetics, maintainability, and responsiveness in web UIs by converting low-quality code into cleaner, more user-centered interfaces using AI-driven prompts.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- AI-powered transformation of low-quality frontend code
+- Comparative performance analysis of ChatGPT-4o, Claude 3.7, DeepSeek V3, and Gemini Advanced
+- User-centered evaluation rubric (UI/UX, code structure, accessibility)
+- Scenarios: Homepage, Product Detail, Price Tracker
+- Functional prototypes with animation, responsive layout, and error handling
+- Real-user and synthetic persona-based survey integration
 
-### `npm start`
+## Evaluation Dimensions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- UI Design (aesthetics, patterns, animation)
+- UX & Interaction (smoothness, error handling)
+- Code Quality (structure, modularity, maintainability)
+- Data & Functionality (logic, dataset usage)
+- Model-Specific Challenges (template reliance, creativity)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/<your-username>/ai-assisted-frontend-enhancement.git
+cd ai-assisted-frontend-enhancement
+```
 
-### `npm run build`
+Install required dependencies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-### Additional Package
+```bash
 npm install styled-components
 npm install lucide-react
 npm install @mui/icons-material recharts
 npm install react-icons framer-motion
-npm install lucide-react
 npm install @mui/material @emotion/react @emotion/styled
-npm install @mui/icons-material
+```
+
+> Note: Some packages may be repeated due to separate component-specific dependencies.
+
+## Running the App
+
+```bash
+npm start
+```
+
+Then visit `http://localhost:3000` in your browser to explore the prototypes.
+
+## Documentation
+
+- [Project Report](https://docs.google.com/document/d/111pXzJ82Q0IZlWvJEp3dj3Rd3EJoATMaim8iF1wROVg/edit?usp=sharing)
+- `prompts/`: Scenario-specific prompt files
+- `evaluation/`: Rubric scores, user feedback, and analysis scripts
+- `components/`: Modular and AI-enhanced UI components
+
+## Authors
+
+- Jason Hu (jasonh11@illinois.edu)
+- Nianze Guo (nianzeg2@illinois.edu)
+- Ziyue Zhuang (ziyue14@illinois.edu)
+- Chenhan Luo (chenhan8@illinois.edu)
+
+University of Illinois Urbana-Champaign
