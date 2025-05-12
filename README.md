@@ -1,9 +1,11 @@
-# Necessary packages need to be installed:
+# Necessary Packages to be Installed:
 ```
+npm install framer-motion lucide-react
 npm install react-icons framer-motion
 ```
+
 # Process:
-Success using one prompt.
+1. General propmt:
 ```
 You are an expert front-end developer with deep knowledge of UI design, code style consistency, component library integration, and animation principles. Your task is to transform an existing low-quality codebase into a polished, professional responsive e-commerce website.
 1. Apply professional UI/UX design patterns to improve visual consistency, spacing, alignment, typography, color usage, and responsiveness across devices.
@@ -44,8 +46,9 @@ C:.
   5. Add some animations appropriately to make the user interaction smoother and more responsive.
 8. Current file content: (to enter)
 Respond should include the file names followed by their content in full, and followed by any external library used.
-
 ```
 
-### Additional Package
-npm install react-icons framer-motion
+2. clarified itemData.json file, and asked for necessary packages:
+```
+first, any package i need to install? secondly, i have my itemdata.json here, adjust code to satisfy this
+```
