@@ -1,7 +1,7 @@
 # Necessary Packages to be Installed:
 ```
-npm install framer-motion lucide-react
 npm install react-icons framer-motion
+npm install lucide-react
 ```
 
 # Process:
