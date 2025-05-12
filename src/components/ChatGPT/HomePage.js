@@ -47,7 +47,11 @@ const HomePage = () => {
               >
                 {item.title}
               </Link>
-              <p style={styles.price}>${item.price.toFixed(2)}</p>
+              <div className="product-price">
+                <div className="product-price">
+                  ${typeof item.price === "number" ? item.price.toFixed(2) : "0.00"}
+                </div>
+              </div>
               <button style={styles.addToCartBtn}>Add to Cart</button>
             </div>
           </motion.div>

@@ -27,9 +27,7 @@ const HomePage = () => {
             >
               {item.title}
             </Link>
-            <div className="product-price">
-              ${typeof item.price === "number" ? item.price.toFixed(2) : "0.00"}
-            </div>
+            <div className="product-price">${item.price.toFixed(2)}</div>
           </div>
         ))}
       </div>
