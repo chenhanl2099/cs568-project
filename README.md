@@ -2,6 +2,8 @@
 ```
 npm install react-icons framer-motion
 npm install lucide-react
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
 ```
 
 # Process:
