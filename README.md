@@ -71,3 +71,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Additional Package
 npm install styled-components
+npm install lucide-react
