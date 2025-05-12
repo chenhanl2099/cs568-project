@@ -46,3 +46,6 @@ C:.
 Respond should include the file names followed by their content in full, and followed by any external library used.
 
 ```
+
+### Additional Package
+npm install react-icons framer-motion
