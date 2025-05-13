@@ -9,8 +9,8 @@ from helpers import clean_json_response
 # Paths
 PROFILE_PATH = "data/generated_personalities.csv"
 EVAL_TEMPLATE_PATH = "evaluation_table.json"
-APP_CODE_PATH = "data/application/ChatGPT.json"
-OUTPUT_PATH = "synthetic_eval_ChatGPT.json"
+APP_CODE_PATH = "data/application/Plain.json"
+OUTPUT_PATH = "synthetic_eval_Plain.json"
 
 # Load evaluation template
 with open(EVAL_TEMPLATE_PATH, "r", encoding="utf-8") as f:
