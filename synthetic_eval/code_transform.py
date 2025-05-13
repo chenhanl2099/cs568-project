@@ -16,56 +16,96 @@ def escape_multiline_code(source_code: str) -> str:
 if __name__ == "__main__":
     # Hardcoded multiline source code
     source_code = """
-import React from 'react';
-import {
-  ResponsiveContainer,
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-} from 'recharts';
-import PropTypes from 'prop-types';
+import React from "react";
+import { useParams } from "react-router-dom";
+import PriceTrackingChart from "./PriceTrackingChart";
+import "./PriceTrackingPage.css";
 
-/**
- * Reusable price tracking line chart.
- */
-const PriceTrackingChart = ({ data }) => {
-  if (!data?.length) return <p style={{ textAlign: 'center' }}>No price data available.</p>;
+// Sample monthly price data for items
+const mockPriceData = {
+  item1: [
+    { month: "Jan", price: 99 },
+    { month: "Feb", price: 105 },
+    { month: "Mar", price: 102 },
+    { month: "Apr", price: 97 },
+    { month: "May", price: 103 },
+    { month: "Jun", price: 98 },
+    { month: "Jul", price: 99 },
+    { month: "Aug", price: 105 },
+    { month: "Sep", price: 102 },
+    { month: "Oct", price: 97 },
+    { month: "Nov", price: 103 },
+    { month: "Dec", price: 98 }
+  ],
+  item2: [
+    { month: "Jan", price: 129 },
+    { month: "Feb", price: 125 },
+    { month: "Mar", price: 123 },
+    { month: "Apr", price: 130 },
+    { month: "May", price: 127 },
+    { month: "Jun", price: 126 },
+    { month: "Jul", price: 99 },
+    { month: "Aug", price: 105 },
+    { month: "Sep", price: 102 },
+    { month: "Oct", price: 97 },
+    { month: "Nov", price: 103 },
+    { month: "Dec", price: 98 }
+  ],
+  item3: [
+    { month: "Jan", price: 129 },
+    { month: "Feb", price: 125 },
+    { month: "Mar", price: 123 },
+    { month: "Apr", price: 130 },
+    { month: "May", price: 127 },
+    { month: "Jun", price: 126 },
+    { month: "Jul", price: 99 },
+    { month: "Aug", price: 105 },
+    { month: "Sep", price: 102 },
+    { month: "Oct", price: 97 },
+    { month: "Nov", price: 103 },
+    { month: "Dec", price: 98 }
+  ]
+};
+
+const PriceTrackingPage = () => {
+  const { id } = useParams();
+  const priceData = mockPriceData[`item${id}`] || [];
 
   return (
-    <div style={{ width: '100%', height: 300 }}>
-      <ResponsiveContainer>
-        <LineChart data={data} margin={{ top: 20, right: 30, left: 10, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Line
-            type="monotone"
-            dataKey="price"
-            stroke="#8884d8"
-            strokeWidth={2}
-            activeDot={{ r: 6 }}
-            dot={{ r: 4 }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+    <main className="price-tracking-container">
+      <header className="tracking-header">
+        <h1>📈 Price Tracking for Item {id}</h1>
+        <p>View trends and monthly price changes with visual insight.</p>
+      </header>
+
+      <section className="chart-wrapper">
+        <PriceTrackingChart data={priceData.map(({ month, price }) => ({ date: month, price }))} />
+      </section>
+
+      <section className="price-table-section">
+        <h2 className="table-heading">Monthly Price Overview</h2>
+        <table className="price-table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Price ($)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {priceData.map((entry, index) => (
+              <tr key={index}>
+                <td>{entry.month}</td>
+                <td>${entry.price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    </main>
   );
 };
 
-PriceTrackingChart.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      month: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-    })
-  ).isRequired,
-};
-
-export default PriceTrackingChart;
+export default PriceTrackingPage;
     """.strip()
 
     escaped_string = escape_multiline_code(source_code)
