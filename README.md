@@ -38,10 +38,11 @@ npm install react-icons framer-motion
 npm install @mui/material @emotion/react @emotion/styled
 ```
 
-> Note: Some packages may be repeated due to separate component-specific dependencies.
+> Note 1: Some packages may be repeated due to separate component-specific dependencies.
 
-| To run files under branch `synthetic_eval`, some packages installation needed, just run 
-```pip install google-generativeai
+> Note 2:  To run files under branch `synthetic_eval`, some packages installation needed, just run 
+```
+pip install google-generativeai
 ```
 
 ## Running the App
